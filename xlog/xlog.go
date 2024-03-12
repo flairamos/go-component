@@ -2,6 +2,7 @@ package xlog
 
 import (
 	"fmt"
+	ct "github.com/daviddengcn/go-colortext"
 	"log"
 	"os"
 )
@@ -15,7 +16,7 @@ type goLogger struct {
 func Init() {
 	var logger goLogger
 	logger.Log = log.Default()
-	logger.Log.SetFlags(log.Lshortfile | log.Ldate)
+	logger.Log.SetFlags(log.Llongfile | log.Ldate | log.Ltime)
 	logger.Log.SetPrefix("")
 	GoLogger = logger
 }
@@ -51,43 +52,51 @@ func init() {
 }
 
 func (l *goLogger) InfoP(v ...any) {
-	str := fmt.Sprintln("info  ", v)
+	ct.Foreground(ct.White, false)
+	str := fmt.Sprintln("info \t", v)
 	l.Log.Output(2, str)
 }
 
 func (l *goLogger) WarnP(v ...any) {
-	str := fmt.Sprintln("warn  ", v)
+	ct.Foreground(ct.Green, false)
+	str := fmt.Sprintln("warn \t", v)
 	l.Log.Output(2, str)
 }
 
 func (l *goLogger) ErrorP(v ...any) {
-	str := fmt.Sprintln("error  ", v)
+	ct.Foreground(ct.Yellow, false)
+	str := fmt.Sprintln("error\t", v)
 	l.Log.Output(2, str)
 }
 
 func (l *goLogger) FatalP(v ...any) {
-	str := fmt.Sprintln("fatal  ", v)
+	ct.Foreground(ct.Red, false)
+	str := fmt.Sprintln("fatal\t", v)
 	l.Log.Output(2, str)
 	os.Exit(1)
 }
 
 // format和fmt.Sprintf()方法用法一致
 func (l *goLogger) InfoF(format string, v ...any) {
-	str := fmt.Sprintf("info "+format, v...)
+	ct.Foreground(ct.White, false)
+	str := fmt.Sprintf("info \t"+format, v...)
 	l.Log.Output(2, str)
 }
 
 func (l *goLogger) WarnF(format string, v ...any) {
-	str := fmt.Sprintf("warn "+format, v...)
+	ct.Foreground(ct.Green, false)
+	str := fmt.Sprintf("warn \t"+format, v...)
 	l.Log.Output(2, str)
 }
 
 func (l *goLogger) ErrorF(format string, v ...any) {
-	str := fmt.Sprintf("error "+format, v...)
+	ct.Foreground(ct.Yellow, false)
+	str := fmt.Sprintf("error\t"+format, v...)
 	l.Log.Output(2, str)
 }
 
 func (l *goLogger) FatalF(format string, v ...any) {
-	str := fmt.Sprintf("error "+format, v...)
+	ct.Foreground(ct.Red, false)
+	str := fmt.Sprintf("error\t"+format, v...)
 	l.Log.Output(2, str)
 }

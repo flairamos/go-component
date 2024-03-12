@@ -19,3 +19,14 @@
 
 # Go workspace file
 go.work
+
+
+.idea
+/.idea
+.idea/
+
+.vscode
+/.vscode
+.vscode/
+
+*.xml
