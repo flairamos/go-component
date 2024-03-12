@@ -97,6 +97,6 @@ func (l *goLogger) ErrorF(format string, v ...any) {
 
 func (l *goLogger) FatalF(format string, v ...any) {
 	ct.Foreground(ct.Red, false)
-	str := fmt.Sprintf("error\t"+format, v...)
+	str := fmt.Sprintf("fatal\t"+format, v...)
 	l.Log.Output(2, str)
 }
