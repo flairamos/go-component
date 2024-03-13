@@ -100,3 +100,28 @@ func (l *goLogger) FatalF(format string, v ...any) {
 	str := fmt.Sprintf("fatal\t"+format, v...)
 	l.Log.Output(2, str)
 }
+
+func Info(v ...any) {
+	GoLogger.InfoP(v...)
+}
+func Warn(v ...any) {
+	GoLogger.WarnP(v...)
+}
+func Error(v ...any) {
+	GoLogger.ErrorP(v...)
+}
+func Fatal(v ...any) {
+	GoLogger.FatalP(v...)
+}
+func InfoF(format string, v ...any) {
+	GoLogger.InfoF(format, v...)
+}
+func WarnF(format string, v ...any) {
+	GoLogger.WarnF(format, v...)
+}
+func ErrorF(format string, v ...any) {
+	GoLogger.ErrorF(format, v...)
+}
+func FatalF(format string, v ...any) {
+	GoLogger.FatalF(format, v...)
+}
