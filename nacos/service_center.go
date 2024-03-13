@@ -26,6 +26,22 @@ func RegisterService(config *ClientConfig, instanceConfig vo.RegisterInstancePar
 	return success
 }
 
+// DeregisterService
+func DeregisterService(config *ClientConfig, instanceConfig vo.DeregisterInstanceParam) bool {
+	var err error
+	namingClient, err := ServiceClient(config)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	instance, err := namingClient.DeregisterInstance(instanceConfig)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	return instance
+}
+
 // GetService
 // 获取实例详情
 func GetService(config *ClientConfig, serviceInfo vo.GetServiceParam) (model.Service, error) {
@@ -47,6 +63,23 @@ func GetAllServices(config *ClientConfig, instanceConfig vo.SelectAllInstancesPa
 		return nil, err
 	}
 	services, err := client.SelectAllInstances(instanceConfig)
+	return services, nil
+}
+
+// GetHealthyService
+// 获取健康的实例
+// health=true,enable=true and weight>0
+func GetHealthyService(config *ClientConfig, serviceInfo vo.SelectOneHealthInstanceParam) (*model.Instance, error) {
+	client, err := ServiceClient(config)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	services, err := client.SelectOneHealthyInstance(serviceInfo)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
 	return services, nil
 }
 
