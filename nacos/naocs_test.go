@@ -107,7 +107,7 @@ func TestRegisterCenter(t *testing.T) {
 	//config := DefaultClient("service_foodplatform", "commodity_rpc", "dev.food_platform", nil)
 	//service := RegisterService(config, "commodity_rpc")
 	//fmt.Println(service)
-	client, err := ServiceClient(DefaultClient("test", "mysql", "dev_food_platform", nil))
+	client, err := GetNamingClient(DefaultClient("test", "mysql", "dev_food_platform", nil))
 	if err != nil {
 		t.Error(err)
 	}
@@ -142,16 +142,16 @@ func TestRegisterServe(t *testing.T) {
 		Ephemeral:   true,
 		ServiceName: "test_app",
 	}
-	service := RegisterService(DefaultClient("public", "mysql", "dev_food_platform", nil), param)
+	service := RegisterInstance(DefaultClient("public", "mysql", "dev_food_platform", nil), param)
 	fmt.Println(service)
 }
 
 func TestGetService(t *testing.T) {
 	instance := DefaultClient("public", "mysql", "dev_food_platform", nil)
 	var param = vo.GetServiceParam{
-		ServiceName: "test_app",            // 服务命
-		Clusters:    []string{"cluster-a"}, // 默认值DEFAULT
-		GroupName:   "dev_food_platform",   // 默认值DEFAULT_GROUP
+		ServiceName: "test_app",          // 服务命
+		Clusters:    []string{"test"},    // 默认值DEFAULT
+		GroupName:   "dev_food_platform", // 默认值DEFAULT_GROUP
 	}
 	service, err := GetService(instance, param)
 	if err != nil {
@@ -160,14 +160,29 @@ func TestGetService(t *testing.T) {
 	t.Log(service)
 }
 
+func TestDeleteService(t *testing.T) {
+	instance := DefaultClient("public", "mysql", "dev_food_platform", nil)
+	param := vo.DeregisterInstanceParam{
+		ServiceName: "test_app",
+		GroupName:   "dev_food_platform",
+		Cluster:     "test",
+		Ip:          "127.0.0.1",
+		Port:        8848,
+		Ephemeral:   true,
+	}
+	deregisterInstance := DeregisterInstance(instance, param)
+	t.Log(deregisterInstance)
+}
+
 func TestGetAllServices(t *testing.T) {
 	instance := DefaultClient("public", "mysql", "dev_food_platform", nil)
-	param := vo.SelectAllInstancesParam{
-		ServiceName: "test_app",
+	param := vo.SelectInstancesParam{
+		ServiceName: "test_app1",
 		GroupName:   "dev_food_platform", // 默认值DEFAULT_GROUP
 		Clusters:    []string{"test"},    // 默认值DEFAULT
+		HealthyOnly: true,
 	}
-	services, err := GetAllServices(instance, param)
+	services, err := SelectInstances(instance, param)
 	if err != nil {
 		t.Error(err)
 	}
