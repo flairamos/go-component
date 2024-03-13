@@ -11,7 +11,7 @@ require (
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.18 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/daviddengcn/go-colortext v1.0.0 // indirect
-	github.com/flairamos/go-component/xlog v0.0.0-20240313070304-2300bc023e75 // indirect
+	github.com/flairamos/go-component/xlog v0.0.0-20240313084727-55b97a896616 // indirect
 	github.com/go-errors/errors v1.0.1 // indirect
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af // indirect
 	github.com/json-iterator/go v1.1.6 // indirect

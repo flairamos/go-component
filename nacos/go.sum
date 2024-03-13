@@ -11,6 +11,8 @@ github.com/daviddengcn/go-colortext v1.0.0 h1:ANqDyC0ys6qCSvuEK7l3g5RaehL/Xck9EX
 github.com/daviddengcn/go-colortext v1.0.0/go.mod h1:zDqEI5NVUop5QPpVJUxE9UO10hRnmkD5G4Pmri9+m4c=
 github.com/flairamos/go-component/xlog v0.0.0-20240313070304-2300bc023e75 h1:NeeS115I6pPT3RgBIKYUsNh7gKxyV9ObwjKBbvY/oXk=
 github.com/flairamos/go-component/xlog v0.0.0-20240313070304-2300bc023e75/go.mod h1:kj+mrL47t7F+NrSpMIUXlsZ+s5fUbvklVFtpQFxncIc=
+github.com/flairamos/go-component/xlog v0.0.0-20240313084727-55b97a896616 h1:E2GyiPIm5NnT+Ul9ipJvAHXrI9zi8LEdgFyKhNNnShc=
+github.com/flairamos/go-component/xlog v0.0.0-20240313084727-55b97a896616/go.mod h1:kj+mrL47t7F+NrSpMIUXlsZ+s5fUbvklVFtpQFxncIc=
 github.com/go-errors/errors v1.0.1 h1:LUHzmkK3GUKUrL/1gfBUxAHzcev3apQlezX/+O7ma6w=
 github.com/go-errors/errors v1.0.1/go.mod h1:f4zRHt4oKfwPJE5k8C9vpYG+aDHdBFUsgrm6/TyX73Q=
 github.com/goji/httpauth v0.0.0-20160601135302-2da839ab0f4d/go.mod h1:nnjvkQ9ptGaCkuDUx6wNykzzlUixGxvkme+H/lnzb+A=
