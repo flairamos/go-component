@@ -9,7 +9,9 @@ type RedisClient struct {
 	redis.Conn
 }
 
-var RedisConn RedisClient
+var (
+	RedisConn RedisClient
+)
 
 type RedisConfig struct {
 	Address  string `yaml:"address"`

@@ -20,13 +20,13 @@ func TestLock(t *testing.T) {
 }
 
 func A() {
-	err, s := Lock("test")
+	err, s := Lock("test", time.Second*10)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("A is running")
-	err = Unlock("test", *s)
+	fmt.Println("A is running with uuid :", s)
+	err = Unlock("test", s)
 	if err != nil {
 		fmt.Println(err)
 		return
