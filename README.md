@@ -225,6 +225,15 @@ func A() {
 }
 ```
 
+#### ip
+
+获取本机的ip地址
+
+
+#### http_response
+
+http响应封装
+
 
 
 
